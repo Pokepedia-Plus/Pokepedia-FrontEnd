@@ -30,13 +30,15 @@ export default function POP() {
 
   return (
     <div>
-      {pokemonList.map((pokemonData) => (
-        <PokemonModal
-          key={pokemonData.name}
-          pokemonData={pokemonData}
-          pokemonDetails={pokemonDetails}
-        />
-      ))}
+      <section className="collection">
+        {pokemonList.map((pokemonData) => (
+          <PokemonModal
+            key={pokemonData.name}
+            pokemonData={pokemonData}
+            pokemonDetails={pokemonDetails}
+          />
+        ))}
+      </section>
     </div>
   );
 }

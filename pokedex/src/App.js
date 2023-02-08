@@ -1,10 +1,8 @@
-import "./App.css";
-import Modal from "./Components/Modal.js";
+import "./Components/Modal.css"
 import PokemonModal from "./Components/Pokemon.js";
 function App() {
   return (
     <>
-      <Modal />
       <PokemonModal />
     </>
   );

@@ -3,14 +3,41 @@ body.active-modal {
 }
 
 .btn-modal {
-  padding: 10px 20px;
-  display: block;
-  margin: 100px auto 0;
-  font-size: 18px;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: space-between;
+  padding: 1.5rem 0;
+  margin: 2rem;
+  /* border: 15px solid var(--cardborder); */
+  border-radius: 1rem;
+  min-width: 220px;
+  height: 285px;
+  text-align: center;
+  /* box-shadow: 0 5px 25px 1px rgb(0 0 0 / 50%); */
+  box-shadow: 0 1.6px 1.6px rgba(0, 0, 0, 0.023),
+    0 3.8px 3.8px rgba(0, 0, 0, 0.034), 0 6.9px 6.9px rgba(0, 0, 0, 0.041),
+    0 11.4px 11.4px rgba(0, 0, 0, 0.049), 0 18.8px 18.8px rgba(0, 0, 0, 0.056),
+    0 32.8px 32.8px rgba(0, 0, 0, 0.067), 0 71px 71px rgba(0, 0, 0, 0.09);
+  transition: all 0.2s ease-in-out;
 }
 
-.modal,
-.overlay {
+.btn-modal:hover {
+  transform: scale(1.1);
+}
+.image {
+    width: 120px;
+    height: 120px;
+}
+
+.collection {
+  display: flex;
+  flex-direction: row;
+    flex-wrap: wrap;
+
+}
+
+.modal, .overlay {
   width: 100vw;
   height: 100vh;
   top: 0;
@@ -21,7 +48,7 @@ body.active-modal {
 }
 
 .overlay {
-  background: rgba(49, 49, 49, 0.8);
+  background: rgba(255, 0, 0, 0.8);
 }
 .modal-content {
   position: absolute;
@@ -29,11 +56,9 @@ body.active-modal {
   left: 50%;
   transform: translate(-50%, -50%);
   line-height: 1.4;
-  background: #f1f1f1;
-  padding: 14px 28px;
-  border-radius: 3px;
-  max-width: 600px;
-  min-width: 300px;
+      width: 63%;
+    border-radius: 1rem;
+    box-shadow: 0 10px 20px rgb(175 136 136 / 29%), 0 6px 6px rgb(0 0 0 / 43%);
 }
 
 .close-modal {

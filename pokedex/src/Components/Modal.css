@@ -2,6 +2,24 @@ body.active-modal {
   overflow-y: hidden;
 }
 
+.abilities-holder {
+  background-color: hsla(0, 0%, 100%, 0.25098039215686274);
+  padding: 5px;
+  border-radius: 1rem;
+  margin-top: 0.5rem;
+  width: fit-content;
+}
+
+.abilities-ul {
+  display: flex;
+  grid-gap: 0 30px;
+  gap: 0 30px;
+  -webkit-padding-start: 1em;
+  padding-inline-start: 1em;
+}
+.list-ability {
+  text-transform: capitalize;
+}
 .btn-modal {
   display: flex;
   flex-direction: column;
@@ -25,19 +43,93 @@ body.active-modal {
 .btn-modal:hover {
   transform: scale(1.1);
 }
+.card-top {
+  display: flex;
+  flex-direction: row;
+  justify-content: space-between;
+  align-items: center;
+  width: 100%;
+}
 .image {
-    width: 120px;
-    height: 120px;
+  width: 120px;
+  height: 120px;
 }
 
 .collection {
+  background-image: url("https://static.myfigurecollection.net/upload/pictures/2016/04/16/1524199.png");
   display: flex;
   flex-direction: row;
-    flex-wrap: wrap;
-
+  flex-wrap: wrap;
 }
 
-.modal, .overlay {
+.stats-holder {
+  height: fit-content;
+  padding: 10px;
+  background-color: hsla(0, 0%, 100%, 0.25098039215686274);
+}
+.stats-holder {
+  width: 94%;
+  border-radius: 20px;
+}
+
+.moves-set {
+  height: fit-content;
+  padding: 10px;
+  display: flex;
+  flex-wrap: wrap;
+  justify-content: space-between;
+  background-color: hsla(0, 0%, 100%, 0.25098039215686274);
+  border-radius: 20px;
+}
+
+.moves {
+  padding: 20px;
+}
+
+.stat-box {
+  display: flex;
+  width: 100%;
+  padding-bottom: 2px;
+  /* border: 2px solid black; */
+}
+.bar-container {
+  width: 225px;
+  height: 20px;
+  float: right;
+  right: 7%;
+  background-color: hsla(0, 0%, 100%, 0.386);
+  opacity: 0.9;
+  border-radius: 20px;
+  position: absolute;
+  display: flex;
+}
+
+.bar {
+  height: 100%;
+  background-color: green;
+  border-radius: 20px;
+}
+
+.bar-text {
+  font-size: 12px;
+  width: fit-content;
+  color: black;
+  padding: 2px 0px 2px;
+}
+.stop-scroll {
+  position: fixed;
+  overflow: hidden;
+}
+
+.modal {
+  width: 50%;
+}
+.type:hover {
+  opacity: 1;
+}
+
+.modal,
+.overlay {
   width: 100vw;
   height: 100vh;
   top: 0;
@@ -45,6 +137,16 @@ body.active-modal {
   right: 0;
   bottom: 0;
   position: fixed;
+  background-image: url("https://static.myfigurecollection.net/upload/pictures/2016/04/16/1524199.png");
+}
+
+.info-left {
+  justify-content: space-evenly;
+  align-items: center;
+  border-radius: 1rem;
+  background: hsla(0, 0%, 100%, 0.47058823529411764);
+  padding: 20px;
+  margin: 10px;
 }
 
 .overlay {
@@ -56,9 +158,21 @@ body.active-modal {
   left: 50%;
   transform: translate(-50%, -50%);
   line-height: 1.4;
-      width: 63%;
-    border-radius: 1rem;
-    box-shadow: 0 10px 20px rgb(175 136 136 / 29%), 0 6px 6px rgb(0 0 0 / 43%);
+  border-radius: 1rem;
+  display: flex;
+  flex-direction: row;
+  box-shadow: 0 10px 20px rgb(175 136 136 / 29%), 0 6px 6px rgb(0 0 0 / 43%);
+  width: 90%;
+  max-height: 80vh;
+  overflow-y: scroll;
+}
+.modal-content::-webkit-scrollbar {
+  width: 0px;
+  background-color: #f5f5f5;
+}
+.modal-content ::-webkit-scrollbar-thumb {
+  border-radius: 10px;
+  background-color: #000000;
 }
 
 .close-modal {
@@ -66,4 +180,9 @@ body.active-modal {
   top: 10px;
   right: 10px;
   padding: 5px 7px;
+}
+
+.info-right {
+  width: 97%;
+  padding: 20px;
 }

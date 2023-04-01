@@ -5,7 +5,7 @@ export default function PokemonModal({ pokemonData, pokemonDetails }) {
   const [showModal, setShowModal] = useState(false);
   const [showMoves, setShowMoves] = useState(false);
 
-  const currPokemonDetails = pokemonDetails[pokemonData.name];
+  const currPokemonDetails = pokemonDetails[pokemonData.name]
 
   useEffect(() => {
     if (showModal) {
@@ -25,21 +25,23 @@ export default function PokemonModal({ pokemonData, pokemonDetails }) {
   };
 
   let finalColor;
-
+console.log(currPokemonDetails.types.length)
   if (currPokemonDetails.types.length === 2) {
     finalColor = colorTypeGradients(
-      currPokemonDetails.types[0].type.name,
-      currPokemonDetails.types[1].type.name,
+      currPokemonDetails.types[0],
+      currPokemonDetails.types[1],
       currPokemonDetails.types.length
-    );
+    )
+    console.log(finalColor)
   } else {
     finalColor = colorTypeGradients(
-      currPokemonDetails.types[0].type.name,
-      currPokemonDetails.types[0].type.name,
+      currPokemonDetails.types[0],
+      currPokemonDetails.types[0],
       currPokemonDetails.types.length
-    );
+      
+    )
+    console.log(finalColor)
   }
-
   return (
     <>
       <div>
@@ -51,7 +53,7 @@ export default function PokemonModal({ pokemonData, pokemonDetails }) {
           }}
         >
           <div className="card-top">
-            <h1>#{currPokemonDetails.id}</h1>
+            {/* <h1>#{currPokemonDetails.id}</h1> */}
             <p>HP: {currPokemonDetails.stats[5].base_stat}</p>
             <img
               src="https://www.svgheart.com/wp-content/uploads/2022/08/simple-heart_464-430-min.png"
@@ -60,13 +62,13 @@ export default function PokemonModal({ pokemonData, pokemonDetails }) {
           </div>
 
           <img
-            src={currPokemonDetails.sprites.other.dream_world.front_default}
+            src={currPokemonDetails.dreamworld_sprite}
             className={"image"}
           ></img>
           <h1>{pokemonData.name}</h1>
           <p className="type">
             {" "}
-            {currPokemonDetails.types.map((type) => type.type.name).join(", ")}
+            {currPokemonDetails.types.map((type) => type).join(", ")}
           </p>
         </div>
         <div>
@@ -84,7 +86,7 @@ export default function PokemonModal({ pokemonData, pokemonDetails }) {
                   <h2>{currPokemonDetails.name}</h2>
                   <img
                     src={
-                      currPokemonDetails.sprites.other.dream_world.front_default
+                      currPokemonDetails.dreamworld_sprite
                     }
                     className={"image"}
                   ></img>
@@ -92,7 +94,7 @@ export default function PokemonModal({ pokemonData, pokemonDetails }) {
                 </div>
                 <div className="info-right">
                   <h1>abilities</h1>
-                  <div className="abilities-holder">
+                  {/* <div className="abilities-holder">
                     <ul className="abilities-ul">
                       {currPokemonDetails.abilities.map((ability, index) => (
                         <li className="list-ability" key={index}>
@@ -100,13 +102,13 @@ export default function PokemonModal({ pokemonData, pokemonDetails }) {
                         </li>
                       ))}
                     </ul>
-                  </div>
+                  </div> */}
                   <h1>base stats</h1>
                   <div className="stats-holder">
                     {currPokemonDetails.stats.map((stat) => (
-                      <div className="stat-box" key={stat.stat.name}>
+                      <div className="stat-box" key={stat.name}>
                         <div className="bar-text">
-                          {stat.stat.name}: {stat.base_stat}
+                          {stat.name}: {stat.base_stat}
                         </div>
                         <div className="bar-container">
                           <div
@@ -127,7 +129,7 @@ export default function PokemonModal({ pokemonData, pokemonDetails }) {
                       .slice(0, showMoves ? undefined : 4)
                       .map((move, index) => (
                         <p className="moves" key={index}>
-                          {move.move.name}
+                          {move}
                         </p>
                       ))}
                   </div>

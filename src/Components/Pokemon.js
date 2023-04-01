@@ -7,17 +7,17 @@ export default function POP() {
   const [currPokemonName, setCurrPokemonName] = useState(null);
 
   useEffect(() => {
-    fetch("https://pokeapi.co/api/v2/pokemon?limit=151")
+    fetch("http://localhost:4000/pokemons")
       .then((res) => res.json())
       .then((data) => {
-        setPokemonList(data.results);
-        data.results.map((poke) => setCurrPokemonName(poke.name));
+        setPokemonList(data);
+        data.map((poke) => setCurrPokemonName(poke.name));
       });
   }, []);
 
   useEffect(() => {
     if (currPokemonName) {
-      fetch(`https://pokeapi.co/api/v2/pokemon/${currPokemonName}`)
+      fetch(`http://localhost:4000/pokemonsData?name=${currPokemonName}`)
         .then((res) => res.json())
         .then((data) => {
           setPokemonDetails((prevState) => ({

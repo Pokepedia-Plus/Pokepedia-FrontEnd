@@ -1,4 +1,12 @@
-
+*{
+  margin: 0px;
+  padding: 0px;
+  outline: 0px;
+  box-sizing: border-box;
+}
+.all{
+padding: 10px;
+}
 body.active-modal {
   overflow-y: hidden;
 }
@@ -22,27 +30,41 @@ body.active-modal {
   text-transform: capitalize;
 }
 .btn-modal {
-  display: flex;
-  flex-direction: column;
+  /* display: flex; */
+  /* flex-direction: column;
   align-items: center;
-  justify-content: space-between;
-  padding: 1.5rem 0;
-  margin: 2rem;
-  /* border: 15px solid var(--cardborder); */
-  border-radius: 1rem;
-  min-width: 220px;
-  height: 285px;
-  text-align: center;
-  /* box-shadow: 0 5px 25px 1px rgb(0 0 0 / 50%); */
-  box-shadow: 0 1.6px 1.6px rgba(0, 0, 0, 0.023),
+  justify-content: space-between; */
+  
+  padding: 15px;
+  border-radius: 15px;
+  height: 130px;
+  box-shadow: 0 1.5px 1.5px rgba(0, 0, 0, 0.023),
     0 3.8px 3.8px rgba(0, 0, 0, 0.034), 0 6.9px 6.9px rgba(0, 0, 0, 0.041),
     0 11.4px 11.4px rgba(0, 0, 0, 0.049), 0 18.8px 18.8px rgba(0, 0, 0, 0.056),
-    0 32.8px 32.8px rgba(0, 0, 0, 0.067), 0 71px 71px rgba(0, 0, 0, 0.09);
+    0 32.8px 32.8px rgba(0, 0, 0, 0.067), 0 30px 34px rgba(0, 0, 0, 0.09);
   transition: all 0.2s ease-in-out;
+
+  
 }
 
 .btn-modal:hover {
-  transform: scale(1.1);
+  transform: scale(1.05);
+}
+
+.poke-name{
+  font-size: 30px;
+    font-weight: bold;
+    color: rgb(255, 255, 255);
+    text-transform: capitalize;
+    text-shadow: rgba(13 12 12 / 30%) 2px 2px 2px;
+    white-space: nowrap;
+    overflow: hidden;
+    text-overflow: ellipsis;
+    max-width: 180px;
+}
+.id{
+ color: rgba(0, 0, 0, 0.5);
+ font-weight: bold;
 }
 .card-top {
   display: flex;
@@ -52,15 +74,28 @@ body.active-modal {
   width: 100%;
 }
 .image {
-  width: 120px;
-  height: 120px;
+  width: 96px;
+  height: 96px;
+}
+
+.wow{
+  display: flex;
+    -webkit-box-align: center;
+    align-items: center;
+    -webkit-box-pack: justify;
+    justify-content: space-between;
+
 }
 
 .collection {
   background-image: url("https://static.myfigurecollection.net/upload/pictures/2016/04/16/1524199.png");
-  display: flex;
-  flex-direction: row;
-  flex-wrap: wrap;
+  /* display: flex; */
+  /* flex-direction: row; */
+  /* flex-wrap: wrap; */
+  padding:60px;
+    display: grid;
+    grid-template-columns: repeat(auto-fill, minmax(300px, 1fr));
+    gap: 45px;
 }
 
 .stats-holder {
@@ -124,6 +159,23 @@ body.active-modal {
 
 .modal {
   width: 50%;
+}
+.type{
+  display: inline-grid;
+    gap: 5px 10px;
+    grid-area: auto / auto / auto / auto;
+    grid-auto-flow: column;
+    margin-top: 10px;
+}
+.typo{
+  font-size: 14px;
+  padding: 5px;
+  color: rgb(255, 255, 255);
+  text-transform: capitalize;
+  border-radius: 5px;
+  box-shadow: rgba(0, 0, 0, 0.1) 2px 2px 3px 0px;
+  min-width: 45px;
+  text-align: center;
 }
 .type:hover {
   opacity: 1;

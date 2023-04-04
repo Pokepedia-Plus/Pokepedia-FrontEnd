@@ -7,7 +7,7 @@ export default function POP() {
   const [currPokemonName, setCurrPokemonName] = useState(null);
 
   useEffect(() => {
-    fetch("http://localhost:4000/pokemons")
+    fetch("https://pokepedia-backend-production.up.railway.app/pokemons")
       .then((res) => res.json())
       .then((data) => {
         setPokemonList(data);
@@ -17,7 +17,7 @@ export default function POP() {
 
   useEffect(() => {
     if (currPokemonName) {
-      fetch(`http://localhost:4000/pokemonsData?name=${currPokemonName}`)
+      fetch(`https://pokepedia-backend-production.up.railway.app/pokemonsData?name=${currPokemonName}`)
         .then((res) => res.json())
         .then((data) => {
           setPokemonDetails((prevState) => ({

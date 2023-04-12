@@ -1,39 +1,68 @@
 import React, { useState, useEffect } from "react";
-import PokemonModal from "./PokemonModals"
+import PokemonModal from "./PokemonModals";
+import SearchBar from "./Searchbar";
+import supabase from "./config/supabaseClient";
 
 export default function POP() {
   const [pokemonList, setPokemonList] = useState([]);
-  const [pokemonDetails, setPokemonDetails] = useState({});
-  const [currPokemonName, setCurrPokemonName] = useState(null);
+  const [pokemonDetails, setPokemonDetails] = useState([]);
+  const [searchText, setSearchText] = useState("");
+  const [sortOrder, setSortOrder] = useState("id");
 
   useEffect(() => {
-    fetch("https://pokepedia-backend-production.up.railway.app/pokemons")
-      .then((res) => res.json())
-      .then((data) => {
-        setPokemonList(data);
-        data.map((poke) => setCurrPokemonName(poke.name));
+    const fetchPokemonList = async () => {
+      let { data: pokemons } = await supabase
+        .from("pokemon")
+        .select(
+          "id, name, types, height, moves, dreamworld_sprite, stats, weight"
+        )
+        .order("pokemon_id");
+      setPokemonList(pokemons);
+      const pokemonListByName = {};
+      pokemons.forEach((pokemon) => {
+        let typesParse = JSON.parse(pokemon.types);
+        let statsParse = JSON.parse(pokemon.stats);
+        let movesPARSE = JSON.parse(pokemon.moves);
+        pokemonListByName[pokemon.name] = {
+          ...pokemon,
+          types: typesParse,
+          stats: statsParse,
+          moves: movesPARSE,
+        };
       });
+
+      setPokemonDetails(pokemonListByName);
+    };
+    fetchPokemonList();
   }, []);
 
-  useEffect(() => {
-    if (currPokemonName) {
-      fetch(`https://pokepedia-backend-production.up.railway.app/pokemonsData?name=${currPokemonName}`)
-        .then((res) => res.json())
-        .then((data) => {
-          setPokemonDetails((prevState) => ({
-            ...prevState,
-            [currPokemonName]: data,
-          }));
-        });
-    }
-  }, [currPokemonName]);
+  const filteredPokemonList = pokemonList
+    .filter((pokemon) =>
+      searchText
+        ? pokemon.name
+            .toLowerCase()
+            .includes(searchText.toLowerCase()) ||
+          pokemon.id.toString().includes(searchText.toLowerCase())
+        : true
+    )
+    .sort((pokemon1, pokemon2) =>
+      sortOrder === "name"
+        ? pokemon1.name.localeCompare(pokemon2.name)
+        : pokemon1.id - pokemon2.id
+    );
 
   return (
     <div>
+      <SearchBar
+        searchText={searchText}
+        setSearchText={setSearchText}
+        sortOrder={sortOrder}
+        setSortOrder={setSortOrder}
+      />
       <section className="collection">
-        {pokemonList.map((pokemonData) => (
+        {filteredPokemonList.map((pokemonData) => (
           <PokemonModal
-            key={pokemonData.name}
+            key={pokemonData.id}
             pokemonData={pokemonData}
             pokemonDetails={pokemonDetails}
           />

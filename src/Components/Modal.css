@@ -4,8 +4,17 @@
   outline: 0px;
   box-sizing: border-box;
 }
+
+
+
+
+
 .all{
 padding: 10px;
+}
+
+.body{
+  background-image: url("https://static.myfigurecollection.net/upload/pictures/2016/04/16/1524199.png");
 }
 body.active-modal {
   overflow-y: hidden;
@@ -86,12 +95,15 @@ body.active-modal {
     justify-content: space-between;
 
 }
+.whole{
+  background-image: url("https://static.myfigurecollection.net/upload/pictures/2016/04/16/1524199.png");
+}
 
 .collection {
-  background-image: url("https://static.myfigurecollection.net/upload/pictures/2016/04/16/1524199.png");
   /* display: flex; */
   /* flex-direction: row; */
   /* flex-wrap: wrap; */
+  height: 100vh;
   padding:60px;
     display: grid;
     grid-template-columns: repeat(auto-fill, minmax(300px, 1fr));
@@ -183,6 +195,7 @@ body.active-modal {
 
 .modal,
 .overlay {
+  background-image: url("https://static.myfigurecollection.net/upload/pictures/2016/04/16/1524199.png");
   width: 100vw;
   height: 100vh;
   top: 0;
@@ -190,7 +203,6 @@ body.active-modal {
   right: 0;
   bottom: 0;
   position: fixed;
-  background-image: url("https://static.myfigurecollection.net/upload/pictures/2016/04/16/1524199.png");
 }
 
 .info-left {
@@ -238,4 +250,40 @@ body.active-modal {
 .info-right {
   width: 97%;
   padding: 20px;
+}
+
+.search-container {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  margin: 20px 0;
+  font-family: 'Press Start 2P', cursive;
+}
+
+.search-label {
+  font-size: 16px;
+  color: #000000;
+  margin-right: 10px;
+}
+
+.search-input {
+  padding: 8px;
+  border-radius: 25px;
+  border: none;
+  background-color: #ffffff;
+  color: #000000;
+  font-size: 16px;
+  font-family: 'Press Start 2P', cursive;
+  box-shadow: 0 0 10px rgba(255, 255, 255, 0.1);
+}
+
+.search-select {
+  padding: 8px;
+  border-radius: 25px;
+  border: none;
+  background-color: #ffffff;
+  color: #000000;
+  font-size: 16px;
+  font-family: 'Press Start 2P', cursive;
+  box-shadow: 0 0 10px rgba(255, 255, 255, 0.1);
 }

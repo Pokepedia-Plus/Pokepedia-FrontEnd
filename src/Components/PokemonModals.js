@@ -1,12 +1,13 @@
 import React, { useState, useEffect } from "react";
 import { colorTypeGradients } from "./PokeTypeColors";
 import typeColors from "./Typecolors.js";
-export default function PokemonModal({ pokemonData, pokemonDetails }) {
+export default function PokemonModal({  pokemonData, pokemonDetails }) {
   const [showModal, setShowModal] = useState(false);
   const [showMoves, setShowMoves] = useState(false);
 
-  const currPokemonDetails = pokemonDetails[pokemonData.name]
-
+const currPokemonDetails = pokemonDetails[pokemonData.name]
+// console.log(currPokemonDetails)
+// console.log(currPokemonDetails)
   useEffect(() => {
     if (showModal) {
       document.body.style.overflow = "hidden";
@@ -25,14 +26,14 @@ export default function PokemonModal({ pokemonData, pokemonDetails }) {
   };
 
   let finalColor;
-console.log(currPokemonDetails.types.length)
+// console.log(currPokemonDetails.types.length)
   if (currPokemonDetails.types.length === 2) {
     finalColor = colorTypeGradients(
       currPokemonDetails.types[0],
       currPokemonDetails.types[1],
       currPokemonDetails.types.length
     )
-    console.log(finalColor)
+    // console.log(finalColor)
   } else {
     finalColor = colorTypeGradients(
       currPokemonDetails.types[0],
@@ -40,7 +41,7 @@ console.log(currPokemonDetails.types.length)
       currPokemonDetails.types.length
       
     )
-    console.log(finalColor)
+    // console.log(finalColor)
   }
   return (
     <>

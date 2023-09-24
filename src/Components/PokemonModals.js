@@ -4,10 +4,9 @@ import typeColors from "./Typecolors.js";
 export default function PokemonModal({  pokemonData, pokemonDetails }) {
   const [showModal, setShowModal] = useState(false);
   const [showMoves, setShowMoves] = useState(false);
+  const [display, setDisplay] = useState(151);
 
 const currPokemonDetails = pokemonDetails[pokemonData.name]
-// console.log(currPokemonDetails)
-// console.log(currPokemonDetails)
   useEffect(() => {
     if (showModal) {
       document.body.style.overflow = "hidden";
@@ -56,7 +55,7 @@ const currPokemonDetails = pokemonDetails[pokemonData.name]
         <div className="wow">
         <div className="left-wow">
         <p className="id">
-  # {currPokemonDetails.id < 10 ? `00${currPokemonDetails.id}` : currPokemonDetails.id < 100 ? `0${currPokemonDetails.id}` : currPokemonDetails.id}
+  # {currPokemonDetails.pokemon_id < 10 ? `00${currPokemonDetails.pokemon_id}` : currPokemonDetails.pokemon_id < 100 ? `0${currPokemonDetails.pokemon_id}` : currPokemonDetails.pokemon_id}
 </p>
 
         <h2 className="poke-name">{currPokemonDetails.name}</h2>
@@ -73,10 +72,19 @@ const currPokemonDetails = pokemonDetails[pokemonData.name]
 
         </div>
         <div className="right-wow">
-        <img
-            src={currPokemonDetails.dreamworld_sprite}
-            className={"image"}
-          ></img>
+        {currPokemonDetails.dreamworld_sprite ? (
+  <img
+    src={currPokemonDetails.dreamworld_sprite}
+    className={"image"}
+    alt="Dreamworld Sprite"
+  />
+) : (
+  <img
+    src={currPokemonDetails.front_sprite}
+    className={"image"}
+    alt="Front Sprite"
+  />
+)}
         </div>
             
           </div>
@@ -92,14 +100,21 @@ const currPokemonDetails = pokemonDetails[pokemonData.name]
                 }}
               >
                 <div className="info-left">
-                  <p>ID: {currPokemonDetails.id}</p>
+                  <p>id: {currPokemonDetails.pokemon_id}</p>
                   <h2>{currPokemonDetails.name}</h2>
-                  <img
-                    src={
-                      currPokemonDetails.dreamworld_sprite
-                    }
-                    className={"image"}
-                  ></img>
+                  {currPokemonDetails.dreamworld_sprite ? (
+  <img
+    src={currPokemonDetails.dreamworld_sprite}
+    className={"image"}
+    alt="Dreamworld Sprite"
+  />
+) : (
+  <img
+    src={currPokemonDetails.front_sprite}
+    className={"image"}
+    alt="Front Sprite"
+  />
+)}
                   <p>Height: {currPokemonDetails.height}</p>
                 </div>
                 <div className="info-right">
